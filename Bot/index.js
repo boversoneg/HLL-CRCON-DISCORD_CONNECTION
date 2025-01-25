@@ -1,9 +1,25 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+const { createConnection } = require('mysql');
 require('dotenv').config();
 
 const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages ] });
+
+let mysqlData = {
+    host: process.env.mysqlHOST,
+    user: process.env.mysqlUSER,
+    password: process.env.mysqlPASSWORD,
+    database: process.env.mysqlDATABASE
+};
+
+let con = createConnection(mysqlData)
+
+con.connect((err) => {
+	if (err) throw err;
+
+	console.log('Connected to MySQL database.');
+});
 
 client.commands = new Collection();
 
@@ -40,7 +56,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction, con);
 	} catch (error) {
 		console.error(error);
 		if (interaction.replied || interaction.deferred) {
