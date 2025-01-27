@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const { translateString, gatherCommandTranslation } = require('../../stringsTranslation.js');
 const util = require('util');
 
@@ -35,6 +35,21 @@ module.exports = {
         const query = util.promisify(mysqlConnection.query).bind(mysqlConnection);
         const userID = interaction.user.id;
 
+        // Create buttons for future use 
+        const verifyButton = new ButtonBuilder()
+            .setCustomId('verify')
+            .setLabel(translateString('verify_button_label'))
+            .setStyle(ButtonStyle.Success);
+        
+        const stopAuthButton = new ButtonBuilder()
+            .setCustomId('stop_auth')
+            .setLabel(translateString('delete_pending_auth_button_label'))
+            .setStyle(ButtonStyle.Danger);
+
+        const row = new ActionRowBuilder()
+            .addComponents(verifyButton)
+            .addComponents(stopAuthButton);
+
         // Check if player already connected their Discord account with HLL in-game account || Check if player already created authorization code
         const connectStatus = await query('SELECT code, authorized FROM discord_codes WHERE discord_id = ?', [userID]);
         if (connectStatus.length > 0) {
@@ -58,7 +73,7 @@ module.exports = {
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0xff0000);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral, components: [row] });
         }
 
         // Generate authorization code
@@ -77,6 +92,6 @@ module.exports = {
             .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
             .setColor(0x00ff00);
 
-        await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+        await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral, components: [row] });
     }
 }

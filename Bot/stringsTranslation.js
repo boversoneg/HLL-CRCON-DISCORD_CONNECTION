@@ -11,6 +11,9 @@ let translatedStrings = {
 
         // When you want to translate this string remember to use {code} and {player_id} in place where you want to display the authorization code and player ID
         auth_code_success_generated: 'Your authorization code has been successfully generated.\n\nYour provided account ID is: **{player_id}**\nYour authorization code is: **{code}**\n\nPlease type this code in the game chat and then press "Verify" button below to finish the connection process.',
+
+        verify_button_label: 'Verify',
+        delete_pending_auth_button_label: 'Delete pending authorization',
     },
 
     pl: {
@@ -20,6 +23,8 @@ let translatedStrings = {
         auth_code_already_generated: 'Już wygenerowałeś swój kod autoryzacyjny.\n\nPodane ID konta: **{player_id}**\nTwój kod autoryzacyjny to: **{code}**\n\nNapisz ten kod na chacie w grze, a następnie naciśnij przycisk "Zweryfikuj" pod tą wiadomością, aby dokończyć proces połączenia.',
         auth_code_success_generated_title: 'Kod autoryzacyjny został pomyślnie wygenerowany',
         auth_code_success_generated: 'Twój kod autoryzacyjny został pomyślnie wygenerowany.\n\nPodane ID konta: **{player_id}**\nTwój kod autoryzacyjny to: **{code}**\n\nNapisz ten kod na chacie w grze, a następnie naciśnij przycisk "Zweryfikuj" pod tą wiadomością, aby dokończyć proces połączenia.',
+        verify_button_label: 'Zweryfikuj',
+        delete_pending_auth_button_label: 'Usuń oczekującą autoryzację',
     },
 }
 
