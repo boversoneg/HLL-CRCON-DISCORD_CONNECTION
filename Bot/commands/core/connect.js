@@ -39,7 +39,7 @@ module.exports = {
         const connectStatus = await query('SELECT code, authorized FROM discord_codes WHERE discord_id = ?', [userID]);
         if (connectStatus.length > 0) {
             if (connectStatus[0].authorized == 1) {
-                const embed = await new EmbedBuilder()
+                const embed = new EmbedBuilder()
                     .setTitle(translateString('already_connected_title'))
                     .setDescription(translateString('already_connected'))
                     .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
@@ -51,7 +51,7 @@ module.exports = {
             let translatedString = await translateString('auth_code_already_generated')
             translatedString = translatedString.replace('{code}', connectStatus[0].code);
 
-            const embed = await new EmbedBuilder()
+            const embed = new EmbedBuilder()
                 .setTitle(translateString('auth_code_already_generated_title'))
                 .setDescription(translatedString)
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
@@ -69,7 +69,7 @@ module.exports = {
         let translatedString = await translateString('auth_code_success_generated')
         translatedString = translatedString.replace('{code}', code);
 
-        const embed = await new EmbedBuilder()
+        const embed = new EmbedBuilder()
             .setTitle(translateString('auth_code_success_generated_title'))
             .setDescription(translatedString)
             .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
