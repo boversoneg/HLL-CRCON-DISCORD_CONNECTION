@@ -1,3 +1,5 @@
+// This code can be found at https://discordjs.guide/creating-your-bot/command-deployment.html#command-registration
+
 const { REST, Routes } = require('discord.js');
 // const { clientId, guildId, token } = require('./config.json');
 const fs = require('node:fs');
@@ -41,6 +43,8 @@ const rest = new REST().setToken(process.env.TOKEN);
 		);
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		console.log('');
+		console.log('If your commands are not translated to language you want to, check if translation is added in stringsTranslation.js file and make sure that your discord server region is correct.');
 	} catch (error) {
 		// And of course, make sure you catch and log any errors!
 		console.error(error);
