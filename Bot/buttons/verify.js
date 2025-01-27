@@ -69,6 +69,17 @@ module.exports = {
         });
         
         let latestPlayerMessageContent = await latestPlayerMessage.body.json();
+
+        if (latestPlayerMessageContent.result.logs.length <= 0) {
+            const embed = new EmbedBuilder()
+                .setTitle(translateString('authorization_failed_title'))
+                .setDescription(translateString('authorization_failed_desc'))
+                .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
+                .setColor(0xff0000);
+
+            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+        }
+
         latestPlayerMessageContent = latestPlayerMessageContent.result.logs[0].sub_content;
 
         if (latestPlayerMessageContent == playerQuery[0].code) {
