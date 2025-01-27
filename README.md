@@ -1,3 +1,6 @@
+## License
+This code is licensed by Creative Commons (CC BY-NC) License. More can be found [there](https://creativecommons.org/licenses/by-nc/4.0/)
+
 ## Requirements
 - Node.js (Tested on v20.17.0)
 - Discord BOT token (Get it on [Discord Developers Portal](https://discord.com/developers/applications))
