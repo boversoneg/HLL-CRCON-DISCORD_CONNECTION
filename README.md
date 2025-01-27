@@ -5,7 +5,7 @@
 - MySQL Database
 
 ## Installation
-1. Upload mysql table from `MySQL` folder into your database (To be added).
+1. Upload mysql table from `MySQL` folder into your database.
 2. Upload files from Bot folder into your machine or local computer
 3. Using command prompt go into your bot folder (`cd <your-folder-name-goes-there>`)
 4. Install BOT packages using `npm i` command in your command prompt
