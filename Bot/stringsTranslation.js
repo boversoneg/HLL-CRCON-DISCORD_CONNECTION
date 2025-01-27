@@ -1,7 +1,7 @@
 let translatedStrings = {
     en: {
         already_connected_title: 'You already connected your account',
-        already_connected: 'You already connected your Discord account with HLL in-game account.',
+        already_connected: 'You already connected your Discord account with HLL in-game account. You can disconnect them to change player id using `/disconnect` command.',
         auth_code_already_generated_title: 'You already created your authorization code',
         auth_code_success_generated_title: 'Authorization code successfully generated',
 
@@ -19,11 +19,15 @@ let translatedStrings = {
         authorization_not_started_desc: 'You have not started connecting your account yet. First please use the `/connect` command.',
         authorization_stopped_title: 'Authorization process stopped',
         authorization_stopped_desc: 'Authorization process has been stopped. You can start it again by using the `/connect` command.',
+        not_connected_title: 'You are not connected yet',
+        not_connected_desc: 'You are not connected with your HLL account yet. You can connect your accounts using `/connect` command.',
+        disconnect_success_title: 'Successfully disconnected',
+        disconnect_success_desc: 'You have successfully disconnected your Discord account from HLL in-game account.',
     },
 
     pl: {
         already_connected_title: 'Już połączyłeś swoje konto',
-        already_connected: 'Już połączyłeś swoje konto Discord z kontem w grze HLL.',
+        already_connected: 'Już połączyłeś swoje konto Discord z kontem w grze HLL. Możesz je rozłączyć, aby zmienić ID gracza używając komendy `/rozlacz`.',
         auth_code_already_generated_title: 'Już wygenerowałeś swój kod autoryzacyjny',
         auth_code_already_generated: 'Już wygenerowałeś swój kod autoryzacyjny.\n\nPodane ID konta: **{player_id}**\nTwój kod autoryzacyjny to: **{code}**\n\nNapisz ten kod na chacie w grze, a następnie naciśnij przycisk "Zweryfikuj" pod tą wiadomością, aby dokończyć proces połączenia.',
         auth_code_success_generated_title: 'Kod autoryzacyjny został pomyślnie wygenerowany',
@@ -36,6 +40,10 @@ let translatedStrings = {
         authorization_not_started_desc: 'Nie zacząłeś jeszcze procesu łączenia swojego konta. Użyj najpierw komendy `/polacz`.',
         authorization_stopped_title: 'Proces autoryzacji zatrzymany',
         authorization_stopped_desc: 'Proces autoryzacji został zatrzymany. Możesz go zacząć od nowa używając komendy `/polacz`.',
+        not_connected_title: 'Nie jesteś jeszcze połączony',
+        not_connected_desc: 'Nie jesteś jeszcze połączony ze swoim kontem HLL. Możesz połączyć swoje konta używając komendy `/polacz`.',
+        disconnect_success_title: 'Rozłączono pomyślnie',
+        disconnect_success_desc: 'Pomyślnie rozłączono twoje konto Discord z kontem w grze HLL.',
     },
 }
 
@@ -63,6 +71,18 @@ let commandsTranslation = {
         'en-US': 'Enter your HLL in-game player ID (Can be found in top-right side of the screen in Options menu).',
         'en-GB': 'Enter your HLL in-game player ID (Can be found in top-right side of the screen in Options menu).',
         pl: 'Wpisz swoje ID gracza z gry HLL (Można je znaleźć w prawym górnym rogu ekranu w menu Opcji).',
+    },
+
+    disconnect: {
+        'en-US': 'disconnect',
+        'en-GB': 'disconnect',
+        pl: 'rozlacz',
+    },
+
+    disconnect_desc: {
+        'en-US': 'Deauthorize and disconnect your Discord account from HLL in-game account.',
+        'en-GB': 'Deauthorize and disconnect your Discord account from HLL in-game account.',
+        pl: 'Deautoryzuj i rozłącz swoje konto Discord z kontem w grze HLL.',
     },
 }
 
