@@ -31,7 +31,9 @@ module.exports = {
 
             .setRequired(true)),
 
-    async execute(interaction, mysqlConnection) {
+    async execute(interaction) {
+        let mysqlConnection = interaction.client.connection;
+
         const query = util.promisify(mysqlConnection.query).bind(mysqlConnection);
         const userID = interaction.user.id;
 
