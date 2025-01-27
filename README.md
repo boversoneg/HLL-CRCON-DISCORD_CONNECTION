@@ -11,7 +11,8 @@
 4. Install BOT packages using `npm i` command in your command prompt
 5. Create your `.env` file and complete the data using next step boilerplate
 6. Deploy slash commands into your guild using `node deploy-commands.js` command
-7. Turn on your bot using `node index.js` command
+7. **(Optional)** Change your Bot strings language in `Bot/stringsTranslation.js` file by changing variable of `defaultLanguage`. Make sure Bot does support your language.
+8. Turn on your bot using `node index.js` command
 
 ## .env File structure
 Your `.env` file should look like this:
