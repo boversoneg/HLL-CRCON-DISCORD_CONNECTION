@@ -23,6 +23,8 @@ let translatedStrings = {
         not_connected_desc: 'You are not connected with your HLL account yet. You can connect your accounts using `/connect` command.',
         disconnect_success_title: 'Successfully disconnected',
         disconnect_success_desc: 'You have successfully disconnected your Discord account from HLL in-game account.',
+        player_id_in_use_title: 'Player ID already in use',
+        player_id_in_use_desc: 'This player ID is already connected to another Discord account. Please use another player ID.',
     },
 
     pl: {
@@ -44,6 +46,8 @@ let translatedStrings = {
         not_connected_desc: 'Nie jesteś jeszcze połączony ze swoim kontem HLL. Możesz połączyć swoje konta używając komendy `/polacz`.',
         disconnect_success_title: 'Rozłączono pomyślnie',
         disconnect_success_desc: 'Pomyślnie rozłączono twoje konto Discord z kontem w grze HLL.',
+        player_id_in_use_title: 'ID gracza jest już w użyciu',
+        player_id_in_use_desc: 'To ID gracza jest już połączone z innym kontem Discord. Proszę użyj innego ID gracza.',
     },
 }
 

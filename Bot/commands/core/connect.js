@@ -52,6 +52,19 @@ module.exports = {
             .addComponents(verifyButton)
             .addComponents(stopAuthButton);
 
+        // Check if this HLL ID is already connected to any Discord account
+        const hllID = interaction.options.getString('player_id');
+        const hllIDCheck = await query('SELECT discord_id, authorized FROM discord_codes WHERE hll_id = ?', [hllID]);
+        if (hllIDCheck.length > 0) {
+            const embed = new EmbedBuilder()
+                .setTitle(translateString('player_id_in_use_title'))
+                .setDescription(translateString('player_id_in_use_desc'))
+                .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
+                .setColor(0xff0000);
+
+            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+        }
+
         // Check if player already connected their Discord account with HLL in-game account || Check if player already created authorization code
         const connectStatus = await query('SELECT code, authorized FROM discord_codes WHERE discord_id = ?', [userID]);
         if (connectStatus.length > 0) {
