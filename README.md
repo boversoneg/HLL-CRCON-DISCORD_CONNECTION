@@ -1,5 +1,3 @@
-# This is preview and test-only version, you should not use it at this point of development.
-
 ## Requirements
 - Node.js (Tested on v20.17.0)
 - Discord BOT token (Get it on [Discord Developers Portal](https://discord.com/developers/applications))
