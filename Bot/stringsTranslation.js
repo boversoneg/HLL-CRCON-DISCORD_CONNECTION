@@ -3,17 +3,22 @@ let translatedStrings = {
         already_connected_title: 'You already connected your account',
         already_connected: 'You already connected your Discord account with HLL in-game account.',
         auth_code_already_generated_title: 'You already created your authorization code',
+        auth_code_success_generated_title: 'Authorization code successfully generated',
 
         // When you want to translate this string remember to use {code} and {player_id} in place where you want to display the authorization code and player ID 
         auth_code_already_generated: 'You already created your authorization code.\n\nYour provided account ID is: **{player_id}**\nYour authorization code is: **{code}**\n\nPlease type this code in the game chat and then press "Verify" button below to finish the connection process.',
-
-        auth_code_success_generated_title: 'Authorization code successfully generated',
 
         // When you want to translate this string remember to use {code} and {player_id} in place where you want to display the authorization code and player ID
         auth_code_success_generated: 'Your authorization code has been successfully generated.\n\nYour provided account ID is: **{player_id}**\nYour authorization code is: **{code}**\n\nPlease type this code in the game chat and then press "Verify" button below to finish the connection process.',
 
         verify_button_label: 'Verify',
         delete_pending_auth_button_label: 'Delete pending authorization',
+        player_not_found_title: 'Player not found',
+        player_not_found_desc: 'Could not find the player with provided ID. Please use the `/connect` command and make sure your player ID is correct, if not - use `Delete pending authorization` button and start again.',
+        authorization_not_started_title: 'You did not start connecting your account yet',
+        authorization_not_started_desc: 'You have not started connecting your account yet. First please use the `/connect` command.',
+        authorization_stopped_title: 'Authorization process stopped',
+        authorization_stopped_desc: 'Authorization process has been stopped. You can start it again by using the `/connect` command.',
     },
 
     pl: {
@@ -25,6 +30,12 @@ let translatedStrings = {
         auth_code_success_generated: 'Twój kod autoryzacyjny został pomyślnie wygenerowany.\n\nPodane ID konta: **{player_id}**\nTwój kod autoryzacyjny to: **{code}**\n\nNapisz ten kod na chacie w grze, a następnie naciśnij przycisk "Zweryfikuj" pod tą wiadomością, aby dokończyć proces połączenia.',
         verify_button_label: 'Zweryfikuj',
         delete_pending_auth_button_label: 'Usuń oczekującą autoryzację',
+        player_not_found_title: 'Nie znaleziono gracza',
+        player_not_found_desc: 'Nie udało się znaleźć gracza o podanym ID. Użyj najpierw komendy `/polacz` i upewnij się, że podałeś poprawne ID gracza, jeśli nie - użyj przycisku `Usuń oczekującą autoryzację` i zacznij od nowa.',
+        authorization_not_started_title: 'Nie zacząłeś jeszcze procesu łączenia swojego konta',
+        authorization_not_started_desc: 'Nie zacząłeś jeszcze procesu łączenia swojego konta. Użyj najpierw komendy `/polacz`.',
+        authorization_stopped_title: 'Proces autoryzacji zatrzymany',
+        authorization_stopped_desc: 'Proces autoryzacji został zatrzymany. Możesz go zacząć od nowa używając komendy `/polacz`.',
     },
 }
 
@@ -59,7 +70,7 @@ let commandsTranslation = {
 let defaultLanguage = 'en';
 
 function translateString(string) {
-    return translatedStrings[defaultLanguage][string];
+    return translatedStrings[defaultLanguage][string] || translatedStrings['en'][string];
 }
 
 function gatherCommandTranslation(command) {
