@@ -49,6 +49,7 @@ module.exports = {
             }
 
             let translatedString = await translateString('auth_code_already_generated')
+            translatedString = translatedString.replace('{player_id}', interaction.options.getString('player_id'));
             translatedString = translatedString.replace('{code}', connectStatus[0].code);
 
             const embed = new EmbedBuilder()
@@ -67,6 +68,7 @@ module.exports = {
         await query('INSERT INTO discord_codes (discord_id, hll_id, code) VALUES (?, ?, ?)', [userID, interaction.options.getString('player_id'), code]);
 
         let translatedString = await translateString('auth_code_success_generated')
+        translatedString = translatedString.replace('{player_id}', interaction.options.getString('player_id'));
         translatedString = translatedString.replace('{code}', code);
 
         const embed = new EmbedBuilder()
