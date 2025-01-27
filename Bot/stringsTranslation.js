@@ -25,6 +25,10 @@ let translatedStrings = {
         disconnect_success_desc: 'You have successfully disconnected your Discord account from HLL in-game account.',
         player_id_in_use_title: 'Player ID already in use',
         player_id_in_use_desc: 'This player ID is already connected to another Discord account. Please use another player ID.',
+        authorization_success_title: 'Authorization has been successfully completed',
+        authorization_success_desc: 'You have successfully connected your Discord account with your HLL in-game account.',
+        authorization_failed_title: 'Authorization failed',
+        authorization_failed_desc: 'The provided code does not match the one in the game chat. Please try again.\n\n**Note:** If you have problems with authorizating, check if your provided player ID match your in-game player ID. If you still have problems, wait couple minutes and try again, if problem persists please contact the server administrator.',
     },
 
     pl: {
@@ -48,6 +52,10 @@ let translatedStrings = {
         disconnect_success_desc: 'Pomyślnie rozłączono twoje konto Discord z kontem w grze HLL.',
         player_id_in_use_title: 'ID gracza jest już w użyciu',
         player_id_in_use_desc: 'To ID gracza jest już połączone z innym kontem Discord. Proszę użyj innego ID gracza.',
+        authorization_success_title: 'Autoryzacja zakończona pomyślnie',
+        authorization_success_desc: 'Pomyślnie połączyłeś swoje konto Discord z kontem w grze HLL.',
+        authorization_failed_title: 'Autoryzacja nie powiodła się',
+        authorization_failed_desc: 'Podany kod nie pasuje do tego z gry. Spróbuj ponownie.\n\n**Uwaga:** Jeśli masz problemy z autoryzacją, sprawdź, czy podane ID gracza pasuje do twojego ID gracza w grze. Jeśli nadal masz problemy, poczekaj kilka minut i spróbuj ponownie, jeśli problem nadal występuje, skontaktuj się z administratorem serwera.',
     },
 }
 

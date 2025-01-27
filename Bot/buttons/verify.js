@@ -75,8 +75,8 @@ module.exports = {
             await query('UPDATE discord_codes SET authorized = 1 WHERE discord_id = ?', [userID]);
 
             const embed = new EmbedBuilder()
-                .setTitle('Authorization has been successfully completed')
-                .setDescription('You have successfully connected your Discord account with your HLL in-game account.')
+                .setTitle(translateString('authorization_success_title'))
+                .setDescription(translateString('authorization_success_desc'))
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0x00ff00);
 
@@ -84,8 +84,8 @@ module.exports = {
         }
         
         const embed = new EmbedBuilder()
-            .setTitle('Authorization failed')
-            .setDescription('The provided code does not match the one in the game chat. Please try again.\n\n**Note:** If you have problems with authorizating, check if your provided player ID match your in-game player ID. If you still have problems, wait couple minutes and try again, if problem persists please contact the server administrator.')
+            .setTitle(translateString('authorization_failed_title'))
+            .setDescription(translateString('authorization_failed_desc'))
             .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
             .setColor(0xff0000);
 
