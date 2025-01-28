@@ -1,6 +1,6 @@
 const { MessageFlags, EmbedBuilder } = require('discord.js'); 
-const { request } = require('undici');
 const { translateString } = require('../stringsTranslation.js');
+const { gatherApiInformations } = require('../api.js');
 const util = require('util');
 
 require('dotenv').config();
@@ -25,7 +25,7 @@ module.exports = {
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0xff0000);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
 
         if (playerQuery[0].authorized == 1) {
@@ -35,32 +35,32 @@ module.exports = {
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0xff0000);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
 
-        const exactPlayerNameQuery = await request(`${process.env.CRCONPanelURL}/api/get_player_profile?player_id=${playerQuery[0].hll_id}`, {
+        const exactPlayerNameQuery = await gatherApiInformations(`${process.env.CRCONPanelURL}/api/get_player_profile?player_id=${playerQuery[0].hll_id}`, {
             "headers": {
                 Authorization: `bearer ${process.env.CRCONAPIKey}`,
                 Connection: 'keep-alive',
                 'Content-Type': 'application/json',
             },
         });
-        
-        let exactPlayerName = await exactPlayerNameQuery.body.json();
 
-        if (!exactPlayerName.result) {
+        if (!exactPlayerNameQuery) return interaction.reply({ content: translateString('invalid_api_connection'), flags: MessageFlags.Ephemeral });
+
+        if (!exactPlayerNameQuery.result) {
             const embed = new EmbedBuilder()
                 .setTitle(translateString('player_not_found_title'))
                 .setDescription(translateString('player_not_found_desc'))
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0xff0000);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
 
-        exactPlayerName = exactPlayerName.result.names[0].name;
+        let exactPlayerName = exactPlayerNameQuery.result.names[0].name;
         
-        const latestPlayerMessage = await request(`${process.env.CRCONPanelURL}/api/get_recent_logs?filter_player=${exactPlayerName}`, {
+        const latestPlayerMessage = await gatherApiInformations(`${process.env.CRCONPanelURL}/api/get_recent_logs?filter_player=${exactPlayerName}`, {
             "headers": {
                 Authorization: `bearer ${process.env.CRCONAPIKey}`,
                 Connection: 'keep-alive',
@@ -68,19 +68,19 @@ module.exports = {
             },
         });
         
-        let latestPlayerMessageContent = await latestPlayerMessage.body.json();
+        if (!latestPlayerMessage) return interaction.reply({ content: translateString('invalid_api_connection'), flags: MessageFlags.Ephemeral });
 
-        if (latestPlayerMessageContent.result.logs.length <= 0) {
+        if (latestPlayerMessage.result.logs.length <= 0) {
             const embed = new EmbedBuilder()
                 .setTitle(translateString('authorization_failed_title'))
                 .setDescription(translateString('authorization_failed_desc'))
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0xff0000);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
 
-        latestPlayerMessageContent = latestPlayerMessageContent.result.logs[0].sub_content;
+        let latestPlayerMessageContent = latestPlayerMessage.result.logs[0].sub_content;
 
         if (latestPlayerMessageContent == playerQuery[0].code) {
             await query('UPDATE discord_codes SET authorized = 1 WHERE discord_id = ?', [userID]);
@@ -91,7 +91,7 @@ module.exports = {
                 .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
                 .setColor(0x00ff00);
 
-            return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+            return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
         
         const embed = new EmbedBuilder()
@@ -100,6 +100,6 @@ module.exports = {
             .setFooter({ text: 'Author: github.com/boversoneg | Discord: bover.', iconURL: 'https://avatars.githubusercontent.com/u/59316027?v=4' })
             .setColor(0xff0000);
 
-        return await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+        return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
     }
 }
