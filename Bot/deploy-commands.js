@@ -23,16 +23,14 @@ for (const file of commandFiles) {
 }
 
 // Plugins 
-const plugins = [];
-
 const pluginsPath = path.join(__dirname, 'extensions');
-const pluginsFiles = fs.readdirSync(pluginsPath);
+const pluginsFiles = fs.readdirSync(pluginsPath).filter(file => file.endsWith('.js'));
 
 for (const file of pluginsFiles) {
 	const filePath = path.join(pluginsPath, file);
 	const plugin = require(filePath);
 	if (('execute' in plugin && 'type' in plugin) && (plugin.type === 'command') && ('data' in plugin)) {
-		plugins.push(plugin.data.toJSON());
+		commands.push(plugin.data.toJSON());
 	} else {
 		if (plugin.type === 'command') {
 			console.log(`[WARNING] The plugin with type command at ${filePath} is missing a required "data" property.`);
@@ -46,7 +44,7 @@ const rest = new REST().setToken(process.env.TOKEN);
 // and deploy your commands!
 (async () => {
 	try {
-		console.log(`Started refreshing ${commands.length} application (/) and ${plugins.length} extension (plugin) commands.`);
+		console.log(`Started refreshing ${commands.length} application (/) and extension (plugin) commands.`);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
@@ -54,12 +52,7 @@ const rest = new REST().setToken(process.env.TOKEN);
 			{ body: commands },
 		);
 
-		const pluginData = await rest.put(
-			Routes.applicationGuildCommands(process.env.clientId, process.env.guildId),
-			{ body: plugins },
-		);
-
-		console.log(`Successfully reloaded ${data.length} application (/) and ${pluginData.length} extension (plugin) commands.`);
+		console.log(`Successfully reloaded ${data.length} application (/) and extension (plugin) commands.`);
 		console.log('');
 		console.log('If your commands are not translated to language you want to, check if translation is added in stringsTranslation.js file and make sure that your discord server region is correct.');
 	} catch (error) {

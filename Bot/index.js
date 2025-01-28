@@ -74,7 +74,7 @@ for (const file of eventFiles) {
 
 // Plugins system
 const pluginsPath = path.join(__dirname, 'extensions');
-const pluginsFiles = fs.readdirSync(pluginsPath);
+const pluginsFiles = fs.readdirSync(pluginsPath).filter(file => file.endsWith('.js'));
 
 for (const file of pluginsFiles) {
     const filePath = path.join(pluginsPath, file);
