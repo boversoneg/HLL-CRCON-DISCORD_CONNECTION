@@ -48,4 +48,6 @@ Complete the data using those parameters:
 You can contribute as your country translator. To do so, simply go to `Bot/stringsTranslation.js` file, and follow already created strings, any other unique variables and so can be found there as a code notes.
 
 ## Plugins installation
-To be continued..
+Plugins should be uploaded into `extensions` folder in Bot's folder. For now there is 3 supported plugins types: `event`, `command` and `button`.<br />
+<br />
+Examples of all 3 extension types can be found in `Bot/extensions` folder. Feel free to contribute and create such a nice extensions for bot!
