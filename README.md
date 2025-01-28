@@ -29,7 +29,7 @@ CRCONAPIKey=
 
 mysqlHOST=
 mysqlUSER=
-mysqlPASS=
+mysqlPASSWORD=
 mysqlDATABASE=
 ```
 
