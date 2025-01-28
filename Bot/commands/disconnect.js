@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
-const { translateString, gatherCommandTranslation } = require('../../stringsTranslation.js');
+const { translateString, gatherCommandTranslation } = require('../stringsTranslation.js');
 const util = require('util');
 
 module.exports = {

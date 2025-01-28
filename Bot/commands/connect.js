@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
-const { translateString, gatherCommandTranslation } = require('../../stringsTranslation.js');
+const { translateString, gatherCommandTranslation } = require('../stringsTranslation.js');
 const util = require('util');
 
 function generate_code(length) { // Found and copied from: https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
