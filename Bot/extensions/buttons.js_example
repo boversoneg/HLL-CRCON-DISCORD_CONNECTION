@@ -1,0 +1,11 @@
+module.exports = {
+    type: 'button',
+    
+    data: {
+        customId: 'test_button',
+    },
+
+    async execute(interaction) {
+        await interaction.reply('Button clicked!');
+    }
+}

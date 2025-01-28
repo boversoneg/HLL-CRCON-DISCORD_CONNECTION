@@ -72,4 +72,40 @@ for (const file of eventFiles) {
 	}
 }
 
+// Plugins system
+const pluginsPath = path.join(__dirname, 'extensions');
+const pluginsFiles = fs.readdirSync(pluginsPath);
+
+for (const file of pluginsFiles) {
+    const filePath = path.join(pluginsPath, file);
+    const plugin = require(filePath);
+    if ('execute' in plugin && 'type' in plugin) {
+        if (plugin.type === 'command') {
+            if ('data' in plugin) {
+                client.commands.set(plugin.data.name, plugin);
+            } else {
+                console.log(`[WARNING] The plugin with type command at ${filePath} is missing a required "data" property.`);
+            }
+        } else if (plugin.type === 'event') {
+            if ('name' in plugin) {
+                if (plugin.once) {
+                    client.once(plugin.name, (...args) => plugin.execute(...args));
+                } else {
+                    client.on(plugin.name, (...args) => plugin.execute(...args));
+                }
+            } else {
+                console.log(`[WARNING] The plugin with type event at ${filePath} is missing a required "name" property.`);
+            }
+        } else if (plugin.type === 'button') {
+            if ('data' in plugin) {
+                client.buttons.set(plugin.data.customId, plugin);
+            } else {
+                console.log(`[WARNING] The plugin with type button at ${filePath} is missing a required "data" property.`);
+            }
+        }
+    } else {
+        console.log(`[WARNING] The plugin at ${filePath} is missing a required "data" or "execute" property.`);
+    }
+}
+
 client.login(process.env.TOKEN);

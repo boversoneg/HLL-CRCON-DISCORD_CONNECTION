@@ -1,0 +1,11 @@
+const { Events } = require('discord.js');
+
+module.exports = {
+    type: 'event',
+    name: Events.ClientReady,
+    once: true,
+
+    async execute(client) {
+        await console.log('test client ready');
+    }
+}
