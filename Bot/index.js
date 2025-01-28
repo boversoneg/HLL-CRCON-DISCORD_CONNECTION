@@ -55,6 +55,22 @@ for (const file of buttonFiles) {
 	}
 }
 
+client.menus = new Collection();
+
+const menusPath = path.join(__dirname, 'menus');
+const menuFiles = fs.readdirSync(menusPath).filter(file => file.endsWith('.js'));
+
+for (const file of menuFiles) {
+	const filePath = path.join(menusPath, file);
+	const menu = require(filePath);
+	// Set a new item in the Collection with the key as the menu name and the value as the exported module
+	if ('data' in menu && 'execute' in menu) {
+		client.menus.set(menu.data.customId, menu);
+	} else {
+		console.log(`[WARNING] The menu at ${filePath} is missing a required "data" or "execute" property.`);
+	}
+}
+
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 

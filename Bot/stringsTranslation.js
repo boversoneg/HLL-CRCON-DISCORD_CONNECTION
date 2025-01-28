@@ -30,6 +30,11 @@ let translatedStrings = {
         authorization_failed_title: 'Authorization failed',
         authorization_failed_desc: 'The provided code does not match the one in the game chat. Please try again.\n\n**Note:** If you have problems with authorizating, check if your provided player ID match your in-game player ID. If you still have problems, wait couple minutes and try again, if problem persists please contact the server administrator.',
         invalid_api_connection: 'Could not connect to the API. Please try again later.',
+        multiple_servers_title: 'Multiple servers connected',
+        multiple_servers_desc: 'There are multiple servers connected to the API. Please select server on which you sent the authorization code from the list below.',
+        select_server: 'Select server',
+        multiple_servers_player_not_found_desc: 'Could not find the player with provided ID. Please use the `/connect` command and make sure your player ID is correct, if not - use `Delete pending authorization` button and start again.\n\n**Note:** Make sure you have selected correct server from the list, where you send the authorization message.',
+        multiple_servers_authorization_failed_desc: 'The provided code does not match the one in the game chat. Please try again.\n\n**Note:** If you have problems with authorizating, check if your provided player ID match your in-game player ID. If you still have problems, wait couple minutes and try again, if problem persists please contact the server administrator.\n\nMake sure you have selected correct server from the list, where you send the authorization message.',
     },
 
     pl: {
@@ -58,6 +63,11 @@ let translatedStrings = {
         authorization_failed_title: 'Autoryzacja nie powiodła się',
         authorization_failed_desc: 'Podany kod nie pasuje do tego z gry. Spróbuj ponownie.\n\n**Uwaga:** Jeśli masz problemy z autoryzacją, sprawdź, czy podane ID gracza pasuje do twojego ID gracza w grze. Jeśli nadal masz problemy, poczekaj kilka minut i spróbuj ponownie, jeśli problem nadal występuje, skontaktuj się z administratorem serwera.',
         invalid_api_connection: 'Nie udało się połączyć z API. Spróbuj ponownie później.',
+        multiple_servers_title: 'Podłączono wiele serwerów',
+        multiple_servers_desc: 'Podłączono wiele serwerów do API. Wybierz serwer, na który wysłałeś kod autoryzacyjny z poniższej listy.',
+        select_server: 'Wybierz serwer',
+        multiple_servers_player_not_found_desc: 'Nie udało się znaleźć gracza o podanym ID. Użyj najpierw komendy `/polacz` i upewnij się, że podałeś poprawne ID gracza, jeśli nie - użyj przycisku `Usuń oczekującą autoryzację` i zacznij od nowa.\n\n**Uwaga:** Upewnij się, że wybrałeś poprawny serwer z listy, na który wysłałeś kod autoryzacyjny.',
+        multiple_servers_authorization_failed_desc: 'Podany kod nie pasuje do tego z gry. Spróbuj ponownie.\n\n**Uwaga:** Jeśli masz problemy z autoryzacją, sprawdź, czy podane ID gracza pasuje do twojego ID gracza w grze. Jeśli nadal masz problemy, poczekaj kilka minut i spróbuj ponownie, jeśli problem nadal występuje, skontaktuj się z administratorem serwera.\n\nUpewnij się, że wybrałeś poprawny serwer z listy, na który wysłałeś kod autoryzacyjny.',
     },
 }
 

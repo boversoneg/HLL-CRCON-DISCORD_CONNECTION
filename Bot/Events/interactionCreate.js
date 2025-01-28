@@ -35,6 +35,20 @@ module.exports = {
                 console.error(error);
                 await interaction.reply({ content: 'There was an error while executing this button!', flags: MessageFlags.Ephemeral });
             }
+        } else if (interaction.isStringSelectMenu()) {
+            const menu = interaction.client.menus.get(interaction.customId);
+
+            if (!menu) {
+                console.error(`No menu matching ${interaction.customId} was found.`);
+                return;
+            }
+
+            try {
+                await menu.execute(interaction);
+            } catch (error) {
+                console.error(error);
+                await interaction.reply({ content: 'There was an error while executing this menu!', flags: MessageFlags.Ephemeral });
+            }
         }
 	},
 };
