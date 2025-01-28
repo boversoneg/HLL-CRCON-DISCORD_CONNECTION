@@ -1,5 +1,5 @@
 ## License
-This code is licensed by Creative Commons (CC BY-NC) License. More can be found [there](https://creativecommons.org/licenses/by-nc/4.0/)
+This code is under MIT License. More can be found [there](https://opensource.org/license/mit). Please respect author and do not edit embed footers where author is placed.
 
 ## Requirements
 - Node.js (Tested on v20.17.0)
