@@ -11,11 +11,16 @@ module.exports = {
     },
 
     async execute(interaction) {
+        // Get the connection from the client
         let mysqlConnection = interaction.client.connection;
         
+        // Promisify the query
         const query = util.promisify(mysqlConnection.query).bind(mysqlConnection);
+
+        // Get the user ID
         const userID = interaction.user.id;
 
+        // Check if the user is already authorized
         const playerQuery = await query('SELECT hll_id, code, authorized FROM discord_codes WHERE discord_id = ?', [userID]);
 
         if (playerQuery.length <= 0) {
@@ -38,6 +43,7 @@ module.exports = {
             return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
 
+        // Get the player name
         const exactPlayerNameQuery = await gatherApiInformations(`${process.env.CRCONPanelURL}/api/get_player_profile?player_id=${playerQuery[0].hll_id}`, {
             "headers": {
                 Authorization: `bearer ${process.env.CRCONAPIKey}`,
@@ -60,6 +66,7 @@ module.exports = {
 
         let exactPlayerName = exactPlayerNameQuery.result.names[0].name;
         
+        // Get the latest player message
         const latestPlayerMessage = await gatherApiInformations(`${process.env.CRCONPanelURL}/api/get_recent_logs?filter_player=${exactPlayerName}`, {
             "headers": {
                 Authorization: `bearer ${process.env.CRCONAPIKey}`,
@@ -82,6 +89,7 @@ module.exports = {
 
         let latestPlayerMessageContent = latestPlayerMessage.result.logs[0].sub_content;
 
+        // Check if the player sent the same code
         if (latestPlayerMessageContent == playerQuery[0].code) {
             await query('UPDATE discord_codes SET authorized = 1 WHERE discord_id = ?', [userID]);
 
