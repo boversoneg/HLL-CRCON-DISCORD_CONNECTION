@@ -41,7 +41,7 @@ Complete the data using those parameters:
 - **CRCONAPIKey** - API Key to CRCON webpanel
 - **mysqlHOST** - Your MySQL database host
 - **mysqlUSER** - Your MySQL database username
-- **mysqlPASS** - Your MySQL database password
+- **mysqlPASSWORD** - Your MySQL database password
 - **mysqlDATABASE** - Your MySQL database name
 
 ## Translating the bot
