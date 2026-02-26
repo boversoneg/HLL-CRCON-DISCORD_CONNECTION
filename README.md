@@ -1,3 +1,5 @@
+# ⚠️ THIS PROJECT HAS BEEN SUSPENDED AND COULD NOT WORK USE ON YOUR OWN RISK ⚠️
+
 ## License
 This code is under MIT License. More can be found [there](https://opensource.org/license/mit). Please respect author and do not edit embed footers where author is placed.
 
